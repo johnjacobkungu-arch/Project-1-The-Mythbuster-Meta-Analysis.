@@ -1,0 +1,18 @@
+# Run the continuous data meta-analysis
+m_hba1c <- metacont(
+  n.e = N_TRE,
+  mean.e = Mean_Change_TRE,
+  sd.e = SD_TRE,
+  n.c = N_Ctrl,
+  mean.c = Mean_Change_Ctrl,
+  sd.c = SD_Ctrl,
+  studlab = paste(Study_Name, Year),
+  data = meta_data,
+  sm = "MD",             # Measure: Mean Difference (since both use HbA1c %)
+  method.tau = "REML",   # Restricted Maximum Likelihood for random effects
+  random = TRUE,         # Use random-effects model
+  fixed = FALSE          # Suppress fixed-effects model for clarity
+)
+
+# Print a brief summary of the pooled results
+m_hba1c
