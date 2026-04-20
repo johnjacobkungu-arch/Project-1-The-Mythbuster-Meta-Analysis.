@@ -1,0 +1,16 @@
+# Generate a publication-ready forest plot
+forest(
+  m_hba1c,
+  sortvar = Year,               # Sort studies chronologically
+  prediction = TRUE,            # Show prediction interval
+  print.tau2 = FALSE,
+  leftlabs = c("Study", "N", "Mean", "SD", "N", "Mean", "SD"),
+  label.e = "Time-Restricted Eating",
+  label.c = "Standard Care",
+  label.right = "Favors Standard",
+  label.left = "Favors TRE",
+  col.diamond = "firebrick",    # Color the pooled effect diamond
+  col.predict = "black",
+  text.random = "Random Effects Model",
+  fontsize = 10
+)
