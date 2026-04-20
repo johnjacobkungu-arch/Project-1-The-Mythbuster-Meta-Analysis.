@@ -1,0 +1,26 @@
+# Load essential libraries
+# Note: You may need to run install.packages("meta") if you haven't already
+library(tidyverse)
+library(meta)      # The premier package for meta-analyses in R
+
+set.seed(101)
+
+# Simulate extracted data from 8 Randomized Controlled Trials
+meta_data <- tibble(
+  Study_Name = c("Chen et al.", "Smith et al.", "Gupta et al.", "O'Connor et al.", 
+                 "Yamamoto et al.", "Davis et al.", "Patel et al.", "Kim et al."),
+  Year = c(2020, 2021, 2021, 2022, 2023, 2023, 2024, 2025),
+  
+  # Experimental Group (Time-Restricted Eating)
+  N_TRE = round(runif(8, 30, 120)),              # Sample sizes
+  Mean_Change_TRE = rnorm(8, -0.45, 0.15),       # Mean HbA1c drop
+  SD_TRE = runif(8, 0.2, 0.6),                   # Standard Deviation
+  
+  # Control Group (Standard Dietary Advice)
+  N_Ctrl = round(runif(8, 30, 120)),             
+  Mean_Change_Ctrl = rnorm(8, -0.15, 0.15),      
+  SD_Ctrl = runif(8, 0.2, 0.6)
+) %>%
+  arrange(Year) # Sort by publication year
+
+head(meta_data)
